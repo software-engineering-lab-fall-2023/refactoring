@@ -1,9 +1,6 @@
 package semantic.symbol;
 
-import codeGenerator.Address;
-import codeGenerator.Memory;
-import codeGenerator.TypeAddress;
-import codeGenerator.varType;
+import codeGenerator.*;
 import errorHandler.ErrorHandler;
 
 import java.util.ArrayList;
@@ -13,10 +10,10 @@ import java.util.Map;
 public class SymbolTable {
     private Map<String, Klass> klasses;
     private Map<String, Address> keyWords;
-    private Memory mem;
+    private CodeGeneratorMemoryFacade mem;
     private SymbolType lastType;
 
-    public SymbolTable(Memory memory) {
+    public SymbolTable(CodeGeneratorMemoryFacade memory) {
         mem = memory;
         klasses = new HashMap<>();
         keyWords = new HashMap<>();
