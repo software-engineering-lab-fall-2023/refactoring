@@ -27,10 +27,10 @@ public class Parser {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        rules = new ArrayList<Rule>();
+        setRules(new ArrayList<Rule>());
         try {
             for (String stringRule : Files.readAllLines(Paths.get("src/main/resources/Rules"))) {
-                rules.add(new Rule(stringRule));
+                getRules().add(new Rule(stringRule));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class Parser {
 
                         break;
                     case reduce:
-                        Rule rule = rules.get(currentAction.number);
+                        Rule rule = getRules().get(currentAction.number);
                         for (int i = 0; i < rule.RHS.size(); i++) {
                             parsStack.pop();
                         }
@@ -99,5 +99,13 @@ public class Parser {
             }
         }
         if (!ErrorHandler.hasError) cg.printMemory();
+    }
+
+    private ArrayList<Rule> getRules() {
+        return rules;
+    }
+
+    private void setRules(ArrayList<Rule> rules) {
+        this.rules = rules;
     }
 }
