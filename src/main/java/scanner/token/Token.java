@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Token {
+    public static final int PRIME = 31;
     public Type type;
     public String value;
 
@@ -32,9 +33,8 @@ public class Token {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
         int result = type.hashCode();
-        if (type == Type.KEYWORDS) result = prime * result + (value == null ? 0 : value.hashCode());
+        if (type == Type.KEYWORDS) result = PRIME * result + (value == null ? 0 : value.hashCode());
         return result;
     }
 
