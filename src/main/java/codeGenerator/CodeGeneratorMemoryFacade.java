@@ -32,6 +32,8 @@ public class CodeGeneratorMemoryFacade {
     }
 
     public int getDateAddress() {
-        return memory.getDateAddress();
+        int address = memory.getDateAddress();
+        memory.updateDateAddress();
+        return address;
     }
 }

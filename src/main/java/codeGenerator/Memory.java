@@ -26,8 +26,11 @@ public class Memory {
     }
 
     public int getDateAddress() {
+        return lastDataAddress;
+    }
+
+    public void updateDateAddress() {
         lastDataAddress += dataSize;
-        return lastDataAddress - dataSize;
     }
 
     public int saveMemory() {
